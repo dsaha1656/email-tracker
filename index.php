@@ -5,6 +5,16 @@ require_once('fanty.php');
 $actual_link = "$_SERVER[REQUEST_URI]";
 $actual_link = explode('/', $actual_link);
 $hash = end($actual_link);
+if($hash=="login"){
+	header("location:login.php");
+	die;
+}
+
+if($hash=="email"){
+	header("location:email.php");
+	die;
+}
+
 $db = new DB();
 $result = $db->ask('select * from tracking_details');
 if($result->num_rows==0){
