@@ -30,6 +30,8 @@
 
   function send_mail($send_to, $subject, $message, $host='smtp.gmail.com', $email='thesleepingfire007@gmail.com', $password='DiByEnDu#@1'){
 
+    // var_dump($message);
+    // die();
     //Create a new PHPMailer instance
     $mail = new PHPMailer;
 
@@ -38,7 +40,7 @@
     // SMTP::DEBUG_OFF = off (for production use)
     // SMTP::DEBUG_CLIENT = client messages
     // SMTP::DEBUG_SERVER = client and server messages
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     //Set the hostname of the mail server
     $mail->Host = $host;
     //Set the SMTP port number - likely to be 25, 465 or 587
@@ -52,16 +54,16 @@
     //Set who the message is to be sent from
     $mail->setFrom('admin@gmail.com', 'Some Admin');
     //Set an alternative reply-to address
-    $mail->addReplyTo('admin@gmail.com', 'some Last2');
+  // $mail->addReplyTo('admin@gmail.com', 'some Last2');
     //Set who the message is to be sent to
     $mail->addAddress($send_to);
     //Set the subject line
     $mail->Subject = $subject;
     
-    $mail->body = ($message);
-    
     $mail->isHTML(true);
 
+    $mail->Body = ($message);
+    
     //send the message, check for errors
     if (!$mail->send()) {
         // return false;

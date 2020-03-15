@@ -15,6 +15,16 @@ if($hash=="email"){
 	die;
 }
 
+if($hash=="logout"){
+	header("location:logout.php");
+	die;
+}
+
+if($hash=="sent"){
+	header("location:sent.php");
+	die;
+}
+
 $db = new DB();
 $result = $db->ask('select * from tracking_details');
 if($result->num_rows==0){
